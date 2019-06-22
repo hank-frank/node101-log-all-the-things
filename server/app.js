@@ -6,7 +6,7 @@ const csv = require("csvtojson");  //handles the CSV to json https://www.npmjs.c
 
 var logrotate = require('logrotator'); //log rotating packet. //Rotates logs with the parameteres on line 9. More info at https://github.com/capriza/logrotator
 var rotator = logrotate.rotator;
-rotator.register('/Users/henryfrank/Desktop/code/node-101/node101-log-all-the-things/log.csv', {schedule: '5m', size: '10m', count: 10});
+rotator.register('/Users/henryfrank/Desktop/code/node-101/node101-log-all-the-things/tmp/log.csv', {schedule: '5m', size: '10m', count: 10});
 rotator.on('error', function(err) {
   console.log('oops, an error occured!');
 });
@@ -16,11 +16,11 @@ rotator.on('rotate', function(file) {
 });
 
 
-const output = fs.createWriteStream('./stdout.log');
-const errorOutput = fs.createWriteStream('./stderr.log');
-// Custom simple logger
-const { Console } = require('console');
-const logger = new Console({ stdout: output, stderr: errorOutput });
+// const output = fs.createWriteStream('./stdout.log');
+// const errorOutput = fs.createWriteStream('./stderr.log');
+// // Custom simple logger
+// const { Console } = require('console');
+// const logger = new Console({ stdout: output, stderr: errorOutput });
 // use it like console but with logger.log() and it outputs into it's own stdout.log file. SUPER SUPER USEFUL!!
 
 
@@ -65,7 +65,7 @@ initialData.push(status);
 
 var makeArrayStr = initialData.join(","); //array.join(seperator); takes an array, makes the contens a string with wahtever is in () as the seperator.
 var stringWithLineBreak = makeArrayStr + "\n"; //making a new var that is the array string joined with ,'s now with a \n to be a line break in the csv file. 
-logger.log(makeArrayStr);
+// logger.log(makeArrayStr);
 // logger.log(stringWithLineBreak);
 
 console.log(makeArrayStr); //logging each server request to the console. 
@@ -93,12 +93,12 @@ app.get('/', (req, res) => {
 
 app.get('/logs', (req, res) => {
 // using the packet csvToJson above to handle this, the below is their syntax. Link to doc's above. 
-const csvFilePath = '/Users/henryfrank/Desktop/code/node-101/node101-log-all-the-things/log.csv';
+const csvFilePath = '/Users/henryfrank/Desktop/code/node-101/node101-log-all-the-things/tmp/log.csv';
 csv()
     .fromFile(csvFilePath)
     .then(function(jsonArrayObj) {
         console.log(jsonArrayObj);
-        logger.log(jsonArrayObj);
+        // logger.log(jsonArrayObj);
         res.status(200).send(jsonArrayObj);
     })
 });
