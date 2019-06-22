@@ -70,7 +70,7 @@ var stringWithLineBreak = makeArrayStr + "\n"; //making a new var that is the ar
 
 console.log(makeArrayStr); //logging each server request to the console. 
 
-fs.appendFile("log.csv", stringWithLineBreak, (err) => {   //This is adding the whole bunch of stuff to the CSV file. if err throw err part is just fs syntax. 
+fs.appendFile("/tmp/log.csv", stringWithLineBreak, (err) => {   //This is adding the whole bunch of stuff to the CSV file. if err throw err part is just fs syntax. 
     if (err) throw err;
     console.log("The info has been added to the CSV file");
 // logger.log(stringWithLineBreak);
