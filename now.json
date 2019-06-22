@@ -4,6 +4,6 @@
     { "src": "/(.*)", "dest": "/server/index.js" }
   ],
   "builds": [
-    { "src": "server/index.js", "use": "@now/node-server" },
+    { "src": "server/index.js", "use": "@now/node-server" }
   ]
  }
