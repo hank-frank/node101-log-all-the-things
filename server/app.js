@@ -4,16 +4,16 @@ const app = express();
 const csv = require("csvtojson");  //handles the CSV to json https://www.npmjs.com/package/csvtojson
 
 
-var logrotate = require('logrotator'); //log rotating packet. //Rotates logs with the parameteres on line 9. More info at https://github.com/capriza/logrotator
-var rotator = logrotate.rotator;
-rotator.register('/Users/henryfrank/Desktop/code/node-101/node101-log-all-the-things/tmp/log.csv', {schedule: '5m', size: '10m', count: 10});
-rotator.on('error', function(err) {
-  console.log('oops, an error occured!');
-});
-// 'rotate' event is invoked whenever a registered file gets rotated
-rotator.on('rotate', function(file) {
-  console.log('file ' + file + ' was rotated!');
-});
+// var logrotate = require('logrotator'); //log rotating packet. //Rotates logs with the parameteres on line 9. More info at https://github.com/capriza/logrotator
+// var rotator = logrotate.rotator;
+// rotator.register('/Users/henryfrank/Desktop/code/node-101/node101-log-all-the-things/tmp/log.csv', {schedule: '5m', size: '10m', count: 10});
+// rotator.on('error', function(err) {
+//   console.log('oops, an error occured!');
+// });
+// // 'rotate' event is invoked whenever a registered file gets rotated
+// rotator.on('rotate', function(file) {
+//   console.log('file ' + file + ' was rotated!');
+// });
 
 
 // const output = fs.createWriteStream('./stdout.log');
