@@ -33,5 +33,4 @@ describe("Server API logs endpoint", function() {
         done();
       })
   });
-
 });
